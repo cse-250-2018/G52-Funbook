@@ -26,7 +26,7 @@ Report on learning prerequisites
 SL  |   Topic  | Status |
 :-: | :-------:| :-----:|
 1   | Basic Android| ![](https://img.shields.io/badge/Basics-Done-brightgreen) |
-2   | Basic XML    | ![](https://img.shields.io/badge/XML-Ongoing-blue) |
+2   | Basic XML    | ![](https://img.shields.io/badge/XML-Done-brightgreen) |
 3   | First Basic App| ![](https://img.shields.io/badge/Calculator-Done-brightgreen) |
 4   | Second Basic App| ![](https://img.shields.io/badge/Gallery-Ongoing-blue) |
-5   | Third Basic App| ![](https://img.shields.io/badge/Notepad-Left-critical) |
+5   | Third Basic App| ![](https://img.shields.io/badge/Notepad-Done-brightgreen) |
