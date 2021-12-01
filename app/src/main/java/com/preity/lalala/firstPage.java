@@ -4,6 +4,7 @@ package com.preity.lalala;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -19,8 +20,9 @@ public class firstPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_page);
-
-        btn = (Button) findViewById(R.id.button);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        btn = findViewById(R.id.button);
+        img = findViewById(R.id.image);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +44,27 @@ public class firstPage extends AppCompatActivity {
             // compare the resultCode with the
             // SELECT_PICTURE constant
 
+            if (requestCode == SELECT_PICTURE) {
+                // Get the url of the image from data
+                Uri selectedImageUri = data.getData();
+                try {
+                    secondPage.setBGimg(selectedImageUri);
+                }
+                catch (Exception e) {
+                    System.out.println(e);
+                }
+                finally {
+                    OpenSecondPage();
+                }
+            }
+
         }
     }
+
+    public void OpenSecondPage() {
+        Intent i= new Intent(this, secondPage.class );
+        startActivity(i);
+    }
+
+
 }
