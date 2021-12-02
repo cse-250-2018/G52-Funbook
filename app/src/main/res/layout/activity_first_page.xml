@@ -30,12 +30,12 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="204dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:text="Upload background from gallerry!!"
         android:backgroundTint="#0026ff"
         android:textColor="@android:color/white"
-        android:textSize="15dp"
+        android:textSize="21dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
