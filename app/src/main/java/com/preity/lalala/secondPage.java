@@ -1,5 +1,4 @@
 package com.preity.lalala;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -11,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -22,11 +22,14 @@ import java.io.InputStream;
 @SuppressWarnings("ALL")
 public class secondPage extends AppCompatActivity {
     static Uri bg;
-    float xDown_boy=0, yDown_boy=0,xDown_girl=0, yDown_girl=0,xDown_cat=0, yDown_cat=0,xDown_dog=0, yDown_dog=0;
+    float xDown_boy=0, yDown_boy=0,xDown_girl=0, yDown_girl=0,xDown_cat=0, yDown_cat=0,xDown_dog=0, yDown_dog=0,xDown=0,yDown=0;
     ImageView boy;
     ImageView girl;
     ImageView cat;
     ImageView dog;
+    private float mScaleFactor = 1.0f;
+    private ScaleGestureDetector scaleGestureDetector;
+    private ImageView imageView;
 
     LinearLayout layout;
     @Override
@@ -39,110 +42,43 @@ public class secondPage extends AppCompatActivity {
         girl = findViewById(R.id.girl);
         cat = findViewById(R.id.cat);
         dog = findViewById(R.id.dog);
+        scaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
         setBG();
 
+        setListener(boy);
+        setListener(girl);
+        setListener(cat);
+        setListener(dog);
+    }
 
-        boy.setOnTouchListener(new View.OnTouchListener() {
-
+    private void setListener(ImageView img) {
+        img.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                imageView=img;
+                if(event.getPointerCount() <2)
+                {
+                    switch (event.getActionMasked()) {
+                        case MotionEvent.ACTION_DOWN:
+                            xDown=event.getX();
+                            yDown=event.getY();
 
-                switch (event.getActionMasked()) {
-                    case MotionEvent.ACTION_DOWN:
-                        xDown_boy=event.getX();
-                        yDown_boy=event.getY();
+                            break;
+                        case MotionEvent.ACTION_MOVE:
+                            float moveX, moveY;
+                            moveX=event.getX();
+                            moveY=event.getY();
 
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        float moveX, moveY;
-                        moveX=event.getX();
-                        moveY=event.getY();
-
-                        float distanceX=moveX-xDown_boy;
-                        float distanceY=moveY-yDown_boy;
-                        boy.setX(boy.getX()+distanceX);
-                        boy.setY(boy.getY()+distanceY);
-                        break;
+                            float distanceX=moveX-xDown;
+                            float distanceY=moveY-yDown;
+                            imageView.setX(imageView.getX()+distanceX);
+                            imageView.setY(imageView.getY()+distanceY);
+                            break;
+                    }
+                    return true;
                 }
-                return true;
-            }
-        });
 
-
-        girl.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                switch (event.getActionMasked()) {
-                    case MotionEvent.ACTION_DOWN:
-                        xDown_girl=event.getX();
-                        yDown_girl=event.getY();
-
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        float moveX, moveY;
-                        moveX=event.getX();
-                        moveY=event.getY();
-
-                        float distanceX=moveX-xDown_girl;
-                        float distanceY=moveY-yDown_girl;
-                        girl.setX(girl.getX()+distanceX);
-                        girl.setY(girl.getY()+distanceY);
-                        break;
-                }
-                return true;
-            }
-        });
-
-        cat.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                switch (event.getActionMasked()) {
-                    case MotionEvent.ACTION_DOWN:
-                        xDown_cat=event.getX();
-                        yDown_cat=event.getY();
-
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        float moveX, moveY;
-                        moveX=event.getX();
-                        moveY=event.getY();
-
-                        float distanceX=moveX-xDown_cat;
-                        float distanceY=moveY-yDown_cat;
-                        cat.setX(cat.getX()+distanceX);
-                        cat.setY(cat.getY()+distanceY);
-                        break;
-                }
-                return true;
-            }
-        });
-
-        dog.setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                switch (event.getActionMasked()) {
-                    case MotionEvent.ACTION_DOWN:
-                        xDown_dog=event.getX();
-                        yDown_dog=event.getY();
-
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        float moveX, moveY;
-                        moveX=event.getX();
-                        moveY=event.getY();
-
-                        float distanceX=moveX-xDown_dog;
-                        float distanceY=moveY-yDown_dog;
-                        dog.setX(dog.getX()+distanceX);
-                        dog.setY(dog.getY()+distanceY);
-                        break;
-                }
+                scaleGestureDetector.onTouchEvent(event);
                 return true;
             }
         });
@@ -156,7 +92,7 @@ public class secondPage extends AppCompatActivity {
             Drawable dr= new BitmapDrawable(bitmap);
 
             layout.setBackgroundDrawable(dr);
-          //  Toast.makeText(this, bg.toString(), Toast.LENGTH_SHORT).show();
+            //  Toast.makeText(this, bg.toString(), Toast.LENGTH_SHORT).show();
         }
         catch (Exception e) {
             System.out.println(e);
@@ -167,4 +103,17 @@ public class secondPage extends AppCompatActivity {
     protected static void setBGimg(Uri uri) {
         bg= uri;
     }
+
+    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+        @Override
+        public boolean onScale(ScaleGestureDetector scaleGestureDetector) {
+            mScaleFactor *= scaleGestureDetector.getScaleFactor();
+            mScaleFactor = Math.max(0.7f, Math.min(mScaleFactor, 10.0f));
+            imageView.setScaleX(mScaleFactor);
+            imageView.setScaleY(mScaleFactor);
+
+            return true;
+        }
+    }
+
 }
