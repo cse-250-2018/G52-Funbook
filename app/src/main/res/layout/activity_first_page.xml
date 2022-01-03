@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    tools:context=".firstPage">
 
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginBottom="-85dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="0dp"
         android:background="@drawable/ic_wave"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,25 +22,63 @@
     <View
         android:id="@+id/view2"
         android:layout_width="match_parent"
-        android:layout_height="420dp"
+        android:layout_height="400dp"
         android:background="@drawable/ic_wave__1_"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:text="Upload background from gallerry!!"
-        android:backgroundTint="#0026ff"
-        android:textColor="@android:color/white"
-        android:textSize="21dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#9C27B0"
+            android:gravity="center"
+            android:text="Upload background from gallerry!!"
+            android:textColor="@android:color/white"
+            android:textSize="21dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/uploadButton"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#9C27B0"
+            android:gravity="center"
+            android:text="Upload your creation to cloud"
+            android:textColor="@android:color/white"
+            android:textSize="21dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/listViewButton"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#9C27B0"
+            android:gravity="center"
+            android:text="Find all your creations"
+            android:textColor="@android:color/white"
+            android:textSize="21dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/logout_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Logout?"
+            android:textAlignment="center"
+            android:textColor="#9C27B0"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
