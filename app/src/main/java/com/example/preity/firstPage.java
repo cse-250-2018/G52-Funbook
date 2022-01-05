@@ -48,6 +48,8 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.UUID;
 
+// Base activity from where we can go to multiple activity
+
  public class firstPage extends AppCompatActivity {
     private static final String TAG = "first page";
     Button btn,btnUpload,btnGotoList;
@@ -66,38 +68,39 @@ import java.util.UUID;
         btn = findViewById(R.id.button);
         btnUpload = findViewById(R.id.uploadButton);
         btnGotoList = findViewById(R.id.listViewButton);
-       // btnTest = findViewById(R.id.test);
         img = findViewById(R.id.image);
         logout= findViewById(R.id.logout_text);
-        logout.setOnClickListener(new View.OnClickListener() {
+
+
+        logout.setOnClickListener(new View.OnClickListener() {  // logging out the current user
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getApplicationContext(),Login.class));
                 finish();
-
             }
         });
-        btn.setOnClickListener(new View.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {  // Can choose an image for background of next page
             @Override
             public void onClick(View v) {
                 imagepicker();
             }
         });
-        btnUpload.setOnClickListener(new View.OnClickListener() {
+        btnUpload.setOnClickListener(new View.OnClickListener() {   // can upload movies manually
             @Override
             public void onClick(View view) {
                 progressDialog = new ProgressDialog(firstPage.this);
                 choosevideo();
             }
         });
-        btnGotoList.setOnClickListener(new View.OnClickListener() {
+        btnGotoList.setOnClickListener(new View.OnClickListener() {    // going to movie list page
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), VideoListActivity.class));
             }
         });
     }
+    // method to create an intent to choose background image
     void imagepicker() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -107,6 +110,7 @@ import java.util.UUID;
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        // in case of image
         if (resultCode == RESULT_OK) {
 
             // compare the resultCode with the
@@ -128,6 +132,7 @@ import java.util.UUID;
 
         }
 
+        //INn case of Video to upload in firebase
         if (requestCode == 5 && resultCode == RESULT_OK && data != null && data.getData() != null) {
             videouri = data.getData();
             progressDialog.setTitle("Uploading...");
@@ -136,6 +141,7 @@ import java.util.UUID;
         }
     }
 
+    //method for going to second page
     public void OpenSecondPage() {
         Intent i= new Intent(this, secondPage.class );
         startActivity(i);
@@ -151,25 +157,18 @@ import java.util.UUID;
     }
 
 
-
-
-
+    // returns the extention of selected video
     private String getfiletype(Uri videouri) {
         ContentResolver r = getContentResolver();
         // get the file type ,in this case its mp4
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(r.getType(videouri));
     }
-
+    //Uploading in firebase
     private void uploadvideo() {
         if (videouri != null) {
             // save the selected video in Firebase storage
-            //
-            Uri testUri = Uri.fromFile(new File("storage/emulated/0/Movies/HD2022-01-03-11-18-03.mp4"));
-            Log.d(TAG, "uritest: testuri "+ testUri.toString());
-            Log.d(TAG, "uritest: videouri "+ videouri.toString());
 
-            //
             final StorageReference reference = FirebaseStorage.getInstance().getReference("Videos/" + System.currentTimeMillis() + "." + getfiletype(videouri));
             reference.putFile(videouri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -180,8 +179,7 @@ import java.util.UUID;
                     String downloadUri = uriTask.getResult().toString();
                     DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Video");
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
-                    // cpaation random
-
+                    // caption random
                     String uniqueString = UUID.randomUUID().toString();
                     String filename = "Funbook"+uniqueString;
 
@@ -226,6 +224,5 @@ import java.util.UUID;
             });
         }
     }
-
 
 }

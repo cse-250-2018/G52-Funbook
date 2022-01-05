@@ -2,12 +2,17 @@ package com.example.preity;
 
 import com.google.firebase.Timestamp;
 
+// Object that we will upload in firebase
+
+
 public class VideoFile {
     String uid,uri,caption;
     Timestamp timestamp;
 
+    // Empty constructor
     public VideoFile() {
     }
+    // second constructor
 
     public VideoFile(String uid, String uri, String caption, Timestamp timestamp) {
         this.uid = uid;
@@ -25,6 +30,8 @@ public class VideoFile {
                 ", timestamp=" + timestamp +
                 '}';
     }
+
+    //Getter and setters
 
     public String getUid() {
         return uid;

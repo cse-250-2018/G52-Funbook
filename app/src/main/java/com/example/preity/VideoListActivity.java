@@ -15,6 +15,8 @@ import com.google.firebase.firestore.Query;
 
 import java.util.Objects;
 
+//Firebase ui for recyclerview to show data
+
 public class VideoListActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference ref = db.collection("Videos");
@@ -24,9 +26,10 @@ public class VideoListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_list);
-        
         setUpRecyclerView();
     }
+
+    // set adapter for recyclerview and query from firebase
 
     private void setUpRecyclerView() {
         Query query = ref.whereEqualTo("uid", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).
@@ -53,6 +56,4 @@ public class VideoListActivity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
-
-
 }

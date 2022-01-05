@@ -96,6 +96,8 @@ public class VideoAdapter extends FirestoreRecyclerAdapter<VideoFile, VideoAdapt
         return new VideoHolder(v);
     }
 
+    // Structure for the videoholder
+
     class  VideoHolder extends RecyclerView.ViewHolder{
         StyledPlayerView playerView;
         TextView txtShowCaption;

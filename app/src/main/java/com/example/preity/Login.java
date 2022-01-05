@@ -37,6 +37,9 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // Fields required for login
+
         uEmail = findViewById(R.id.EmailAddress);
         uPass = findViewById(R.id.password);
         uRegister = findViewById(R.id.Register);
@@ -45,11 +48,12 @@ public class Login extends AppCompatActivity {
         firebaseAuth =FirebaseAuth.getInstance();
         uForgotPass = findViewById(R.id.forgotPass);
 
-        uLogin.setOnClickListener(new View.OnClickListener() {
+        uLogin.setOnClickListener(new View.OnClickListener() {  // User trying to login
             @Override
             public void onClick(View v) {
                 String email= uEmail.getText().toString().trim();
                 String pass= uPass.getText().toString().trim();
+                // Errors in email and password
                 if(TextUtils.isEmpty(email))
                 {
                     uEmail.setError("EMAIL CAN'T BE EMPTY");
@@ -60,7 +64,7 @@ public class Login extends AppCompatActivity {
                     uPass.setError("PASSWORD CAN'T BE LESS THAN 6");
                     return;
                 }
-                else
+                else // Trying to login
                 {
                     progressBar.setVisibility(View.VISIBLE);
                     firebaseAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -69,14 +73,13 @@ public class Login extends AppCompatActivity {
                             if(task.isSuccessful())
                             {
                                 FirebaseAuth.getInstance().getCurrentUser().reload();
-                                if(FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
+                                if(FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){   /// check if email is verified
                                     startActivity(new Intent(getApplicationContext(), firstPage.class));
                                 }
                                 else
                                 {
                                     Toast.makeText(Login.this, "First verify your mail!", Toast.LENGTH_LONG).show();
                                 }
-
 
                             }
                             else
@@ -90,6 +93,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        //If user do not have an account, S/he will move to register page
         uRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,6 +101,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        //User forgot password
         uForgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,7 +115,7 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String mail=resetMail.getText().toString();
-                        firebaseAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        firebaseAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {  // send mail to reset password
                             @Override
                             public void onSuccess(Void unused) {
                                 Toast.makeText(Login.this, "SENT RESET LINK TO MAIL", Toast.LENGTH_LONG).show();

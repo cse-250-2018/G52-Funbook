@@ -109,6 +109,8 @@ public class secondPage extends AppCompatActivity implements HBRecorderListener 
         draw4 = getResources().getDrawable(R.drawable.kiddob);
         draw5 = getResources().getDrawable(R.drawable.kiddog);
 
+        /// click listeners of each button to upload charecters dynamically
+
         addBoy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,6 +172,7 @@ public class secondPage extends AppCompatActivity implements HBRecorderListener 
             }
         });
         button2 = findViewById(R.id.button2);
+        /// when adding characters is finished
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -194,6 +197,7 @@ public class secondPage extends AppCompatActivity implements HBRecorderListener 
                 recordStop.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Toast.makeText(secondPage.this, "Uploading in local storage.", Toast.LENGTH_LONG).show();
 
                         hbRecorder.stopScreenRecording();
                     }
@@ -203,14 +207,16 @@ public class secondPage extends AppCompatActivity implements HBRecorderListener 
         });
     }
 
+    // method to move, pinch zoom characters, most favourite part of the project
+
     private void setListener(ImageView img) {
         img.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 imageView=img;
-                if(event.getPointerCount() <2)
+                if(event.getPointerCount() <2)   /// just one finger placed, will move photo
                 {
-                    switch (event.getActionMasked()) {
+                    switch (event.getActionMasked()) {       // changing the XY co-ordination of the character
                         case MotionEvent.ACTION_DOWN:
                             xDown=event.getX();
                             yDown=event.getY();
@@ -230,6 +236,7 @@ public class secondPage extends AppCompatActivity implements HBRecorderListener 
                     return true;
                 }
 
+                // two fingers detected, pinch zoom activated
                 scaleGestureDetector.onTouchEvent(event);
                 return true;
             }
@@ -237,12 +244,14 @@ public class secondPage extends AppCompatActivity implements HBRecorderListener 
 
     }
 
+    // method for adding characters dynamically
     private void addView(ImageView boy, int i, int i1) {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(i, i1);
         params.setMargins(0, 10, 0, 0);
         boy.setLayoutParams(params);
         layout_field.addView(boy);
     }
+    // setting background of the activity from the Uri sent from firstPage.java
 
     private void setBG() {
         try{
@@ -259,9 +268,12 @@ public class secondPage extends AppCompatActivity implements HBRecorderListener 
 
     }
 
+    // made static to access from firstPage.java
     protected static void setBGimg(Uri uri) {
         bg= uri;
     }
+
+    // class for pinchzoom
 
     private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
         @Override
@@ -294,12 +306,15 @@ public class secondPage extends AppCompatActivity implements HBRecorderListener 
 
 */
 
+    // when we will press start_record
 
     @Override
     public void HBRecorderOnStart() {
         Log.d(TAG,"started");
    //     Toast.makeText(this, "Started", Toast.LENGTH_SHORT).show();
     }
+
+    // when we will press stop_record
 
     @Override
     public void HBRecorderOnComplete() {
@@ -311,16 +326,20 @@ public class secondPage extends AppCompatActivity implements HBRecorderListener 
      //   Toast.makeText(this, "Video saved in: "+ s, Toast.LENGTH_LONG).show();
     }
 
+    // for exception
+
     @Override
     public void HBRecorderOnError(int errorCode, String reason) {
        // Toast.makeText(this, errorCode+": "+reason, Toast.LENGTH_LONG).show();
         Log.d(TAG, "HBRecorderOnError: "+ reason);
     }
+    // starting recording movie
     private void startRecordingScreen() {
         MediaProjectionManager mediaProjectionManager = (MediaProjectionManager) getSystemService(Context.MEDIA_PROJECTION_SERVICE);
         Intent permissionIntent = mediaProjectionManager != null ? mediaProjectionManager.createScreenCaptureIntent() : null;
         startActivityForResult(permissionIntent, SCREEN_RECORD_REQUEST_CODE);
     }
+    // check permission for mic and storage, if not available, ask for permission
     private Boolean getMicroPer()
     {
        // Toast.makeText(this, "hello", Toast.LENGTH_LONG).show();

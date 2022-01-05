@@ -35,6 +35,8 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 
+// class to upload in firebase after recording a new video
+
 public class uploadInFirebase extends AppCompatActivity {
 
     Button button;
@@ -49,6 +51,8 @@ public class uploadInFirebase extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_in_firebase);
 
+        // Preparing the videoview
+
         videoView = findViewById(R.id.videoView);
         MediaController mediaController = new MediaController(this);
         mediaController.setAnchorView(videoView);
@@ -58,18 +62,28 @@ public class uploadInFirebase extends AppCompatActivity {
         button = findViewById(R.id.button_up);
         txtCaption = findViewById(R.id.txtCaption);
 
+        //Upload in firebase
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog = new ProgressDialog(uploadInFirebase.this);
-                progressDialog.setTitle("Uploading...");
-                progressDialog.show();
-                caption= txtCaption.getText().toString();
-                uploadvideo();
 
+                if(txtCaption.getText().toString().length() < 1)
+                {
+                    Toast.makeText(uploadInFirebase.this, "First give a caption!", Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    progressDialog = new ProgressDialog(uploadInFirebase.this);
+                    progressDialog.setTitle("Uploading...");
+                    progressDialog.show();
+                    caption= txtCaption.getText().toString();
+                    uploadvideo();
+                }
             }
         });
     }
+
+    // find Uri from the filepath where the movie was saved in internal storage
     static void setUri(String s)
     {
         String ss = "";
@@ -79,15 +93,10 @@ public class uploadInFirebase extends AppCompatActivity {
 
        // uri=Uri.parse(s);
 
+    //Upload in firebase
     private void uploadvideo() {
         if (uri != null) {
             // save the selected video in Firebase storage
-            //
-        //    Uri testUri = Uri.fromFile(new File("storage/emulated/0/Movies/HD2022-01-03-11-18-03.mp4"));
-        //    Log.d(TAG, "uritest: testuri " + testUri.toString());
-        //    Log.d(TAG, "uritest: videouri " + uri.toString());
-
-            //
             final StorageReference reference = FirebaseStorage.getInstance().getReference("Videos/" + System.currentTimeMillis() + "." + getfiletype(uri));
             reference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -139,6 +148,7 @@ public class uploadInFirebase extends AppCompatActivity {
             });
         }
     }
+    // get the extention of created file
     private String getfiletype(Uri videouri) {
         ContentResolver r = getContentResolver();
         // get the file type ,in this case its mp4
