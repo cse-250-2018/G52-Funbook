@@ -62,6 +62,8 @@ public class uploadInFirebase extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 progressDialog = new ProgressDialog(uploadInFirebase.this);
+                progressDialog.setTitle("Uploading...");
+                progressDialog.show();
                 caption= txtCaption.getText().toString();
                 uploadvideo();
 
@@ -72,8 +74,6 @@ public class uploadInFirebase extends AppCompatActivity {
     {
         String ss = "";
         ss= s.substring(1);
-        Log.d(TAG, "Allah bachao "+ ss.toString());
-
         uri= Uri.fromFile(new File(ss));
     }
 

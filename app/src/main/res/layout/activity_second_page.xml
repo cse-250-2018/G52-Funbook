@@ -21,8 +21,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/boy"
             android:text="boy!"
+            android:textColor="#998CEB"
             android:layout_weight="1"></Button>
         <Button
+            android:textColor="#998CEB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/girl"
@@ -31,6 +33,7 @@
             android:layout_weight="1"></Button>
 
         <Button
+            android:textColor="#998CEB"
             android:id="@+id/cat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,6 +41,7 @@
             android:backgroundTint="#FBF46D"
             android:text="cat!"></Button>
         <Button
+            android:textColor="#998CEB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/dog"
@@ -45,6 +49,7 @@
             android:text="dog!"
             android:layout_weight="1"></Button>
         <Button
+            android:textColor="#998CEB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/kidb"
@@ -52,6 +57,7 @@
             android:text="babyb!"
             android:layout_weight="1"></Button>
         <Button
+            android:textColor="#998CEB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/kidg"
@@ -59,6 +65,7 @@
             android:text="babyg!"
             android:layout_weight="1"></Button>
         <Button
+            android:textColor="#998CEB"
             android:id="@+id/button2"
             android:layout_weight="1"
             android:layout_width="match_parent"
