@@ -68,7 +68,7 @@ public class secondPage extends AppCompatActivity implements HBRecorderListener 
     Uri mUri;
     static Uri bg;
     float xDown=0,yDown=0;
-    Button recordOn, recordStop;
+    ImageView recordOn, recordStop;
 
     private ImageView tmp;
     private float mScaleFactor = 1.0f;
@@ -78,17 +78,19 @@ public class secondPage extends AppCompatActivity implements HBRecorderListener 
     Drawable draw,draw1,draw2,draw3,draw4,draw5;
 
     Button button2;
-    LinearLayout layout;
+    LinearLayout layout, layout_field;
     GridView scrollCharecters;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second_page);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        layout = findViewById(R.id.field);
+        layout = findViewById(R.id.lay);
         hbRecorder = new HBRecorder(this, this);
-        hbRecorder.setScreenDimensions(1280,720);
+        hbRecorder.setScreenDimensions(720,1280);
+       // hbRecorder.setScreenDimensions(1280,720);
         hbRecorder.setVideoEncoder("H264");
+        layout_field = findViewById(R.id.field);
 
 
         scaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
@@ -186,12 +188,6 @@ public class secondPage extends AppCompatActivity implements HBRecorderListener 
                         {
                             startRecordingScreen();
                         }
-
-
-
-
-
-
                     }
                 });
 
@@ -245,7 +241,7 @@ public class secondPage extends AppCompatActivity implements HBRecorderListener 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(i, i1);
         params.setMargins(0, 10, 0, 0);
         boy.setLayoutParams(params);
-        layout.addView(boy);
+        layout_field.addView(boy);
     }
 
     private void setBG() {
@@ -301,7 +297,8 @@ public class secondPage extends AppCompatActivity implements HBRecorderListener 
 
     @Override
     public void HBRecorderOnStart() {
-        Toast.makeText(this, "Started", Toast.LENGTH_SHORT).show();
+        Log.d(TAG,"started");
+   //     Toast.makeText(this, "Started", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -311,12 +308,12 @@ public class secondPage extends AppCompatActivity implements HBRecorderListener 
         uploadInFirebase.setUri(s);
         startActivity(new Intent(getApplicationContext(), uploadInFirebase.class));
         Log.d(TAG, "filepath : "+ s);
-        Toast.makeText(this, "Video saved in: "+ s, Toast.LENGTH_LONG).show();
+     //   Toast.makeText(this, "Video saved in: "+ s, Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void HBRecorderOnError(int errorCode, String reason) {
-        Toast.makeText(this, errorCode+": "+reason, Toast.LENGTH_LONG).show();
+       // Toast.makeText(this, errorCode+": "+reason, Toast.LENGTH_LONG).show();
         Log.d(TAG, "HBRecorderOnError: "+ reason);
     }
     private void startRecordingScreen() {
@@ -326,7 +323,7 @@ public class secondPage extends AppCompatActivity implements HBRecorderListener 
     }
     private Boolean getMicroPer()
     {
-        Toast.makeText(this, "hello", Toast.LENGTH_LONG).show();
+       // Toast.makeText(this, "hello", Toast.LENGTH_LONG).show();
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_DENIED)
         {
             ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.RECORD_AUDIO},PERMISSION_OK);

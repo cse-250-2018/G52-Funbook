@@ -6,14 +6,45 @@
     android:layout_margin="10dp"
     app:cardElevation="5dp"
     android:padding="5dp">
-    <com.google.android.exoplayer2.ui.StyledPlayerView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:id="@+id/playerView"
-        android:background="@color/black"
-        app:resize_mode="zoom"
-        android:layout_gravity="center"
-        />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FBF46D"
+            android:orientation="horizontal">
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Caption"
+            android:background="#FBF46D"
+            android:textColor="#998CEB"
+            android:textSize="22dp"
+            android:gravity="center"
+            android:id="@+id/txtShowCaption"
+            />
+            <ImageView
+                android:layout_weight="1"
+                android:layout_width="100dp"
+                android:id="@+id/download_btn"
+                android:layout_height="40dp"
+                android:src="@drawable/download"/>
+        </LinearLayout>
+        <com.google.android.exoplayer2.ui.StyledPlayerView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/playerView"
+            android:background="@color/black"
+            app:resize_mode="fill"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+
 
 
 

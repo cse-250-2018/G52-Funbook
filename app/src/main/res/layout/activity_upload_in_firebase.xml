@@ -5,15 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/ic_wave__4_"
     android:gravity="center_horizontal"
     tools:context=".uploadInFirebase">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <VideoView
         android:id="@+id/videoView"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:layout_margin="20dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
          />
+    </FrameLayout>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -25,13 +30,18 @@
         >
 
     </EditText>
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:src="@drawable/upload"/>
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="#9C27B0"
+        android:layout_marginTop="0dp"
+        android:backgroundTint="#998CEB"
         android:text="Upload your creation here!"
-        android:layout_margin="5dp" />
+        android:layout_margin="0dp" />
 
 </LinearLayout>

@@ -1,84 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/ic_wave__2_"
     android:orientation="vertical"
+    android:gravity="center"
+    android:layout_gravity="center_vertical"
     tools:context=".firstPage">
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="0dp"
-        android:background="@drawable/ic_wave"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <View
-        android:id="@+id/view2"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:background="@drawable/ic_wave__1_"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
         android:gravity="center"
-        android:orientation="vertical">
+        android:layout_gravity="center"
+        >
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#9C27B0"
-            android:gravity="center"
-            android:text="Upload background from gallerry!!"
-            android:textColor="@android:color/white"
-            android:textSize="21dp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/uploadButton"
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#9C27B0"
-            android:gravity="center"
-            android:text="Upload your creation to cloud"
-            android:textColor="@android:color/white"
-            android:textSize="21dp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/listViewButton"
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#9C27B0"
-            android:gravity="center"
-            android:text="Find all your creations"
-            android:textColor="@android:color/white"
-            android:textSize="21dp"
-            android:textStyle="bold" />
-
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical">
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="100dp"
+                android:src="@drawable/background"/>
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:gravity="center"
+                android:text="Add background"
+                android:textColor="#998CEB"
+                android:textStyle="bold"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:textSize="9dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
         <TextView
-            android:id="@+id/logout_text"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Logout?"
-            android:textAlignment="center"
-            android:textColor="#9C27B0"
-            android:textStyle="bold" />
+            android:text="          "/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="100dp"
+                    android:src="@drawable/upload"/>
+                <Button
+                    android:id="@+id/uploadButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:gravity="center"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:text="  Upload movie  "
+                    android:textStyle="bold"
+                    android:textColor="#998CEB"
+                    android:textSize="10dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+
+
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="           "/>
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+
+        >
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="100dp"
+                    android:src="@drawable/movies"/>
+                <Button
+                    android:id="@+id/listViewButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:gravity="center"
+                    android:text="Movie library!!"
+                    android:textStyle="bold"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:textColor="#998CEB"
+                    android:textSize="10dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="          "/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="100dp"
+                    android:src="@drawable/logout"/>
+                <TextView
+                    android:id="@+id/logout_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="17dp"
+                    android:paddingBottom="17dp"
+                    android:paddingLeft="37dp"
+                    android:paddingRight="37dp"
+                    android:text=" LOGOUT?  "
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="#998CEB"
+                    android:textSize="10dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</LinearLayout>

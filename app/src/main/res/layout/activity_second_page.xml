@@ -17,7 +17,7 @@
         >
         <Button
             android:layout_width="match_parent"
-            android:backgroundTint="#FFC107"
+            android:backgroundTint="#FBF46D"
             android:layout_height="wrap_content"
             android:id="@+id/boy"
             android:text="boy!"
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/girl"
-            android:backgroundTint="#FFC107"
+            android:backgroundTint="#FBF46D"
             android:text="girl!"
             android:layout_weight="1"></Button>
 
@@ -35,78 +35,71 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:backgroundTint="#FFC107"
+            android:backgroundTint="#FBF46D"
             android:text="cat!"></Button>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/dog"
-            android:backgroundTint="#FFC107"
+            android:backgroundTint="#FBF46D"
             android:text="dog!"
             android:layout_weight="1"></Button>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/kidb"
-            android:backgroundTint="#FFC107"
+            android:backgroundTint="#FBF46D"
             android:text="babyb!"
             android:layout_weight="1"></Button>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/kidg"
-            android:backgroundTint="#FFC107"
+            android:backgroundTint="#FBF46D"
             android:text="babyg!"
             android:layout_weight="1"></Button>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@android:color/transparent"
-        android:orientation="vertical">
-
         <Button
             android:id="@+id/button2"
+            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:backgroundTint="#FFC107"
+            android:backgroundTint="#FBF46D"
             android:layout_height="wrap_content"
             android:text="done"></Button>
 
+    </LinearLayout>
+
+
         <LinearLayout
             android:id="@+id/field"
+            android:layout_weight="10000"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
             android:orientation="horizontal"></LinearLayout>
 
 
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:orientation="vertical"
-        android:visibility="gone"
+        android:layout_weight="1"
+
 
 
         android:id="@+id/record_lay"
         android:layout_height="match_parent" >
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#FFC107"
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/green"
             android:id="@+id/start_record"
-            android:text="start!"/>
-        <Button
-            android:backgroundTint="#FFC107"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:id="@+id/stop_record"
-            android:text="stop!"/>
+            android:src="@drawable/redd"
+           />
     </LinearLayout>
 </LinearLayout>

@@ -2,10 +2,14 @@
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -42,8 +46,9 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.UUID;
 
-public class firstPage extends AppCompatActivity {
+ public class firstPage extends AppCompatActivity {
     private static final String TAG = "first page";
     Button btn,btnUpload,btnGotoList;
     ProgressDialog progressDialog;
@@ -51,6 +56,8 @@ public class firstPage extends AppCompatActivity {
     TextView logout;
     int SELECT_PICTURE = 200;
     Uri videouri;
+
+    Button btnTest;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +66,7 @@ public class firstPage extends AppCompatActivity {
         btn = findViewById(R.id.button);
         btnUpload = findViewById(R.id.uploadButton);
         btnGotoList = findViewById(R.id.listViewButton);
+       // btnTest = findViewById(R.id.test);
         img = findViewById(R.id.image);
         logout= findViewById(R.id.logout_text);
         logout.setOnClickListener(new View.OnClickListener() {
@@ -172,7 +180,12 @@ public class firstPage extends AppCompatActivity {
                     String downloadUri = uriTask.getResult().toString();
                     DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Video");
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
-                    VideoFile file = new VideoFile(FirebaseAuth.getInstance().getCurrentUser().getUid(),downloadUri, Timestamp.now());
+                    // cpaation random
+
+                    String uniqueString = UUID.randomUUID().toString();
+                    String filename = "Funbook"+uniqueString;
+
+                    VideoFile file = new VideoFile(FirebaseAuth.getInstance().getCurrentUser().getUid(),downloadUri, filename, Timestamp.now());
 
                     db.collection("Videos")
                             .add(file)
