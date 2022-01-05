@@ -5,7 +5,7 @@
 Key Features
 -------------
 
-We are trying to develop an app to help kids to enjoy their textbooks. The can also practice their creativity by writing poems, short stories in our app.
+We tried to develop an app to help kids to enjoy their textbooks. The can also practice their creativity by making movies from poems, short stories in our app.
 
 Feature 1: Parents may create new accounts for their children using email address, email verification, resetting password, all features are included
 
