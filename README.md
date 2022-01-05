@@ -7,17 +7,25 @@ Key Features
 
 We are trying to develop an app to help kids to enjoy their textbooks. The can also practice their creativity by writing poems, short stories in our app.
 
-Feature 1: Parents may create new accounts for their children
+Feature 1: Parents may create new accounts for their children using email address, email verification, resetting password, all features are included
 
 Feature 2: Can make a movie from their textbook by screen recording
 
 Feature 3: Can add images as background of the movie
 
-Feature 4: Can add new characters from character's library
+Feature 4: Can add new characters dynamically from character's library
 
-Feature 5: Can make animation by moving characters on the screen and record their voice as well
+Feature 5: Can make animation by moving characters, changing size on the screen and record their voice as well
 
 Feature 6: Can save it in internal storage
+
+Feature 7: Can also upload created videos in Firebase
+
+Feature 8: If did't upload your video when you made it, no problem. You can upload your movies from internal storage anytime
+
+Feature 9: Can watch created videos with caption in the movie list page.
+
+Feature 10: Can download videos from movie list page
 
 Report on learning prerequisites
 ---------------------------------
@@ -43,7 +51,7 @@ First, we would like to express our gratitude to our course teacher Enamul Hassa
 
 We would also like to thank the following individuals, without whom the completion of this project would not have been possible. 
 
-•	Tanhab Hossain, CSE 2018-19, SUST, for his help and guidance in implementing Firebase.
+•	Tanhab Hossain, CSE 2018-19, SUST, for his kind help and guidance in implementing Firebase.
 
 •	Sadekujjaman Saju, CSE 2017-18, SUST, for his warm support and guidance.
 
