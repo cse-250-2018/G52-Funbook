@@ -20,7 +20,7 @@
         android:fontFamily="@font/aclonica"
         android:text="Hello Funbook User!"
         android:textColor="#998CEB"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:layout_margin="5dp"
          />
 
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login to account"
-        android:textSize="10sp"
+        android:textSize="15sp"
         android:textColor="#77E4D4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -98,6 +98,7 @@
         android:layout_height="wrap_content"
         android:text="Don't have an account? Register here"
         android:textColor="#998CEB"
+        android:textSize="15dp"
         app2:layout_constraintEnd_toEndOf="parent"
         app2:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -126,6 +127,7 @@
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="#998CEB"
+        android:textSize="15dp"
         android:textStyle="bold|italic"
         app2:layout_constraintEnd_toEndOf="parent"
         app2:layout_constraintStart_toStartOf="parent"

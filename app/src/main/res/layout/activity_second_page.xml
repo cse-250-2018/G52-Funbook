@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/boy"
             android:text="boy!"
+            android:textStyle="bold"
             android:textColor="#998CEB"
             android:layout_weight="1"></Button>
         <Button
@@ -28,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/girl"
+            android:textStyle="bold"
             android:backgroundTint="#FBF46D"
             android:text="girl!"
             android:layout_weight="1"></Button>
@@ -36,6 +38,7 @@
             android:textColor="#998CEB"
             android:id="@+id/cat"
             android:layout_width="match_parent"
+            android:textStyle="bold"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:backgroundTint="#FBF46D"
@@ -45,6 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/dog"
+            android:textStyle="bold"
             android:backgroundTint="#FBF46D"
             android:text="dog!"
             android:layout_weight="1"></Button>
@@ -54,12 +58,14 @@
             android:layout_height="wrap_content"
             android:id="@+id/kidb"
             android:backgroundTint="#FBF46D"
+            android:textStyle="bold"
             android:text="babyb!"
             android:layout_weight="1"></Button>
         <Button
             android:textColor="#998CEB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
             android:id="@+id/kidg"
             android:backgroundTint="#FBF46D"
             android:text="babyg!"
@@ -69,6 +75,7 @@
             android:id="@+id/button2"
             android:layout_weight="1"
             android:layout_width="match_parent"
+            android:textStyle="bold"
             android:backgroundTint="#FBF46D"
             android:layout_height="wrap_content"
             android:text="done"></Button>
